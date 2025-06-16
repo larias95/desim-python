@@ -5,7 +5,7 @@ setup(
     version="0.0.1",
     description="A Discrete Event Simulation (DES) framework for modeling systems where state changes occur at discrete points in time.",
     long_description=open("./readme.md").read(),
-    long_description="text/markdown",
+    long_description_content_type="text/markdown",
     author="Luis Enrique Arias Curbelo",
     author_email="lariasec@gmail.com",
     url="https://github.com/larias95/desim-python",

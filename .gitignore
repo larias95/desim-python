@@ -1,4 +1,6 @@
 __pycache__/
+build/
+*.egg-info/
+dist/
+extra/
 venv/
-
-notes.txt
