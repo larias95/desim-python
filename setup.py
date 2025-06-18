@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="desim-python",
-    version="0.0.2",
+    version="0.0.3",
     description="A Discrete Event Simulation (DES) library for modeling systems where state changes occur at discrete points in time.",
     long_description=open("./readme.md").read(),
     long_description_content_type="text/markdown",
