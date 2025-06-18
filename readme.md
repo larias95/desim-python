@@ -1,19 +1,23 @@
 # DeSim (Discrete Event Simulator)
 
-A Discrete Event Simulation (DES) framework for modeling systems where state changes occur at discrete points in time.
+A Discrete Event Simulation (DES) library for modeling systems where state changes occur at discrete points in time.
 
 ## Description
 
-*to be added*
+**DeSim** is a flexible Discrete Event Simulation (DES) library built for modeling systems where state changes occur at specific points in time. At its core is a queue of events that governs how the simulation evolves, processing scheduled actions in chronological order to reflect changes in system state. This method allows **DeSim** to simulate dynamic environments with precision and efficiency, focusing computation only when activity occurs, and so, mirroring the complexity of real-world systems without imposing rigid structures.
+
+Using **DeSim** involves defining system behavior through object-oriented design. At the core of the library is a `DiscreteEvent` base class, which users extend to model specific types of events. Each derived event class encapsulates the logic needed to evolve the system, such as modifying state variables, scheduling future events, or interacting with other components. This design encourages clean separation of concerns and makes simulations more maintainable and reusable. By modeling system dynamics as a series of interacting event classes, **DeSim** allows users to build rich, modular simulations that are both intuitive and scalable.
 
 ### Features
 
 - 📦 OOP: Object-oriented paradigm was taken in mind in order to allow flexibility while modeling dynamic systems.
-- ⏱️ Discrete time: Time updates are based on occurrences of events, and not on delta times.
+- ⏱️ Discrete time: Time updates are based on occurrences of events, and not on `while True: update(deltatime)` approaches.
 - ⏩ Queue-based: Events are retrieved from a priority queue that sorts them based on their time of occurrence.
-- 🍃 Lightweight: DeSim has no external dependencies.
+- 🍃 Lightweight: **DeSim** has no external dependencies.
 
 ### Quick Example
+
+Suppose we want to model a store and the flow of customers that arrive over time. We can model this by implementing events like: *the store opened*, *a customer arrived*, *a customer is ready to pay and leave the store*, *the store closed*, etc. So, the execution of one *customer arrival* could lead to the next one, and also to generate an event for when *that customer is done*. We just need to override the `_run(self, env)` method from the `DiscreteEvent` base class to model all of those interactions.
 
 ```python
 from desim import DiscreteEvent, DiscreteEventQueue, run_to_end
