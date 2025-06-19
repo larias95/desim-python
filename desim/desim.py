@@ -131,6 +131,14 @@ def run_to(
     env,
     callback: Callable[[DiscreteEventQueue, Any], None] = None,
 ):
+    """Helper function to run a simulation up to a certain point in time.
+
+    Args:
+        t (float): A point in time.
+        queue (DiscreteEventQueue): An events queue.
+        env (Any): A user-defined object with environment information, system state, etc. to be passed to events.
+        callback (Callable[[DiscreteEventQueue, Any], None], optional): A callback function to be invoked after each simulation step. Defaults to None.
+    """
     while not queue.empty() and queue.t < t:
         if queue.step(env) and (callback is not None):
             callback(queue, env)
@@ -141,6 +149,13 @@ def run_to_end(
     env,
     callback: Callable[[DiscreteEventQueue, Any], None] = None,
 ):
+    """Helper function to run a simulation until no more events remain in the queue.
+
+    Args:
+        queue (DiscreteEventQueue): An events queue.
+        env (Any): A user-defined object with environment information, system state, etc. to be passed to events.
+        callback (Callable[[DiscreteEventQueue, Any], None], optional): A callback function to be invoked after each simulation step. Defaults to None.
+    """
     while not queue.empty():
         if queue.step(env) and (callback is not None):
             callback(queue, env)
